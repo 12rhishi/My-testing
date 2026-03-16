@@ -251,21 +251,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const upwardTickerData = [
         {
-            text: "Mid-Semester (Monsoon) Examination Schedule for MBA 1st Semester'.",
-            link: "Files/events/Index/Monsoon 2025 Mid Term 1st Sem.pdf",
-            date: "01-Oct-2025 to 10-Oct-2025",
-            isNew: true // Add this flag to the desired item	
+            text: "Admissions Opens - MBA 2026-28 Last Date to apply 31/03/2026",
+            link: "javascript:void(0)",
+            date: "16-March-2026",
+            isNew: true,
+            onClick: () => { if (typeof closeNewsModal === 'function') { closeNewsModal(); } const modal = document.getElementById('admission-poster-modal'); if (modal) { modal.classList.remove('hidden'); document.body.style.overflow = 'hidden'; } }
         },
         {
-            text: "International Conference on 'From Code to Cloud'.",
-            link: "News&Events.html#conference",
-            date: "04-Sep-2025",
-        },
-
-        {
-            text: "ABVSME organizes Atal Smriti Samvad.",
-            link: "https://www.jnu.ac.in/node/159897624",
-            date: "20-Aug-2025"
+            text: "Download MBA Programme Brochure (2026-28)",
+            link: "Files/events/Index/ABVSME MBA Programme Brochure (2026-28)-3-1.pdf",
+            date: "16-March-2026",
+            isNew: true
         }
     ];
 
@@ -282,6 +278,12 @@ document.addEventListener('DOMContentLoaded', () => {
             linkElement.target = "_blank";
             linkElement.rel = "noopener noreferrer";
             linkElement.classList.add('upward-ticker-item');
+            if (item.onClick) {
+                linkElement.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    item.onClick();
+                });
+            }
             linkElement.innerHTML = `
     <p class="date">${item.date}</p>
     <div class="flex items-center">
@@ -320,10 +322,53 @@ function closeNewsModal() {
 
 // Close modal on escape key
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeNewsModal();
+    if (e.key === 'Escape') {
+        closeNewsModal();
+        if (typeof closeAdmissionPoster === 'function') closeAdmissionPoster();
+    }
 });
 
 // Close modal on click outside
 document.getElementById('news-image-modal')?.addEventListener('click', (e) => {
     if (e.target.id === 'news-image-modal') closeNewsModal();
+});
+
+// Admission Poster Logic
+function closeAdmissionPoster() {
+    const modal = document.getElementById('admission-poster-modal');
+    if (modal) {
+        modal.classList.add('hidden');
+        document.body.style.overflow = ''; // Restore scrolling
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const posterModal = document.getElementById('admission-poster-modal');
+    if (posterModal && !posterModal.classList.contains('hidden')) {
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Attach events for dynamically mapped elements replacing inline onclicks
+    const newsTriggers = document.querySelectorAll('[data-action="open-news-modal"]');
+    newsTriggers.forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const src = trigger.getAttribute('data-news-image');
+            const title = trigger.getAttribute('data-news-title');
+            openNewsModal(src, title);
+        });
+    });
+
+    const btnCloseNewsModal = document.getElementById('btn-close-news-modal');
+    if (btnCloseNewsModal) {
+        btnCloseNewsModal.addEventListener('click', closeNewsModal);
+    }
+
+    const btnCloseAdmissionPoster = document.getElementById('btn-close-admission-poster');
+    if (btnCloseAdmissionPoster) {
+        btnCloseAdmissionPoster.addEventListener('click', closeAdmissionPoster);
+    }
+});
+
+document.getElementById('admission-poster-modal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'admission-poster-modal') closeAdmissionPoster();
 });

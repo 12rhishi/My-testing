@@ -33,7 +33,7 @@
                 <a href="https://www.jnu.ac.in/emergency"
                     class="hover:text-white hover:underline transition duration-200">Emergency Services</a>
                 <span class="text-gray-600">|</span>
-                <a href="https://www.jnu.ac.in/sites/default/files/Holidays2025.pdf"
+                <a href="https://www.jnu.ac.in/sites/default/files/Holidays2026.pdf"
                     class="hover:text-white hover:underline transition duration-200">List of Holidays</a>
             </div>
 
@@ -64,24 +64,24 @@
                 <div class="flex items-center space-x-1">
                     <button
                         class="text-gray-300 hover:text-white text-xs font-bold px-1 py-0.5 rounded-sm hover:bg-gray-700 transition duration-200"
-                        onclick="changeFontSize(-1)">A-</button>
+                        id="btn-font-decrease">A-</button>
                     <button
                         class="text-gray-300 hover:text-white text-sm font-bold px-1 py-0.5 rounded-sm hover:bg-gray-700 transition duration-200"
-                        onclick="changeFontSize(0)">A</button>
+                        id="btn-font-reset">A</button>
                     <button
                         class="text-gray-300 hover:text-white text-base font-bold px-1 py-0.5 rounded-sm hover:bg-gray-700 transition duration-200"
-                        onclick="changeFontSize(1)">A+</button>
+                        id="btn-font-increase">A+</button>
                 </div>
                 <div class="flex space-x-1">
                     <button
                         class="w-4 h-4 rounded-full bg-red-500 border border-gray-600 hover:border-white transition duration-200"
-                        onclick="changeContrast('red')"></button>
+                        id="btn-contrast-red"></button>
                     <button
                         class="w-4 h-4 rounded-full bg-green-500 border border-gray-600 hover:border-white transition duration-200"
-                        onclick="changeContrast('green')"></button>
+                        id="btn-contrast-green"></button>
                     <button
                         class="w-4 h-4 rounded-full bg-blue-500 border border-gray-600 hover:border-white transition duration-200"
-                        onclick="changeContrast('blue')"></button>
+                        id="btn-contrast-blue"></button>
                 </div>
                 <span class="text-gray-600">|</span>
                 <a href="https://www.jnu.ac.in/hi"
@@ -629,7 +629,24 @@
                 <h2 class="text-4xl font-bold text-blue-800 mb-12">Latest News & Events</h2>
                 <div id="news-carousel-inner" class="flex overflow-x-hidden snap-x snap-mandatory space-x-4 pb-4">
                     <div class="news-card transform hover:scale-105 transition duration-300 relative group cursor-pointer"
-                        onclick="openNewsModal('Images/News&Events/4sep.jpg', 'From Code to Cloud')">
+                        data-action="open-news-modal" data-news-image="Images/News&Events/Admission_Poster.jpeg"
+                        data-news-title="Admission Open (2026-28)">
+                        <div class="block relative overflow-hidden rounded-xl">
+                            <img src="Images/News&Events/Admission_Poster.jpeg" alt="Admission Open (2026-28)"
+                                class="w-full h-80 object-cover shadow-lg object-top" loading="lazy">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+                                    <h3 class="text-lg font-bold">Admission Open</h3>
+                                    <p class="text-sm">MBA Programme 2026-28</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="news-card transform hover:scale-105 transition duration-300 relative group cursor-pointer"
+                        data-action="open-news-modal" data-news-image="Images/News&Events/4sep.jpg"
+                        data-news-title="From Code to Cloud">
                         <div class="block relative overflow-hidden rounded-xl">
                             <img src="Images/News&Events/4sep.jpg" alt="From code to cloud"
                                 class="w-full h-80 object-cover shadow-lg" loading="lazy">
@@ -644,7 +661,8 @@
                     </div>
 
                     <div class="news-card transform hover:scale-105 transition duration-300 relative group cursor-pointer"
-                        onclick="openNewsModal('Images/News&Events/AtalSmritiSamvad_20Aug25.jpg', 'Atal Smriti Samvad')">
+                        data-action="open-news-modal" data-news-image="Images/News&Events/AtalSmritiSamvad_20Aug25.jpg"
+                        data-news-title="Atal Smriti Samvad">
                         <div class="block relative overflow-hidden rounded-xl">
                             <img src="Images/News&Events/AtalSmritiSamvad_20Aug25.jpg" alt="AI in Business Seminar"
                                 class="w-full h-80 object-cover shadow-lg" loading="lazy">
@@ -653,21 +671,6 @@
                                 <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
                                     <h3 class="text-lg font-bold">Atal Smriti Samvad</h3>
                                     <p class="text-sm">Special Seminar</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="news-card transform hover:scale-105 transition duration-300 relative group cursor-pointer"
-                        onclick="openNewsModal('Images/News&Events/abvsme_19Mar25.jpg', 'ABVSME Workshop')">
-                        <div class="block relative overflow-hidden rounded-xl">
-                            <img src="Images/News&Events/abvsme_19Mar25.jpg" alt="Entrepreneurship Workshop"
-                                class="w-full h-80 object-cover shadow-lg" loading="lazy">
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
-                                    <h3 class="text-lg font-bold">ABVSME Workshop</h3>
-                                    <p class="text-sm">March 2025</p>
                                 </div>
                             </div>
                         </div>
@@ -695,7 +698,7 @@
 
     <div id="social-sidebar" class="fixed top-1/2 right-0 transform -translate-y-1/2 z-50">
         <!-- Close button for mobile -->
-        <button id="closeSocialBtn" class="social-close-btn" onclick="hideSocialSidebar()"
+        <button id="closeSocialBtn" class="social-close-btn" id="btn-close-social"
             aria-label="Close social media sidebar">
             ×
         </button>
@@ -807,10 +810,21 @@
         </div>
     </footer>
 
+    <!-- Admission Poster Modal -->
+    <div id="admission-poster-modal"
+        class="fixed inset-0 bg-black/80 z-[200] flex items-center justify-center p-4 backdrop-blur-sm">
+        <div class="relative max-w-2xl w-full flex flex-col items-center">
+            <button id="btn-close-admission-poster"
+                class="absolute -top-10 right-0 text-white text-5xl hover:text-gray-300 transition-colors z-[210] focus:outline-none">&times;</button>
+            <img src="Images/News&Events/Admission_Poster.jpeg" alt="Admission Poster"
+                class="max-h-[85vh] w-auto rounded-lg shadow-2xl object-scale-down border border-white/20 relative z-[205]">
+        </div>
+    </div>
+
     <!-- News Image Modal Overlay -->
     <div id="news-image-modal"
         class="hidden fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4 backdrop-blur-sm">
-        <button onclick="closeNewsModal()"
+        <button id="btn-close-news-modal"
             class="absolute top-6 right-6 text-white text-5xl hover:text-gray-300 transition-colors z-[110] focus:outline-none">&times;</button>
         <div class="max-w-5xl w-full flex flex-col items-center">
             <img id="news-modal-img" src="" alt="News Image"

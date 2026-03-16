@@ -654,3 +654,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Added Event Listeners to remove inline JS
+document.addEventListener('DOMContentLoaded', () => {
+    const btnDec = document.getElementById('btn-font-decrease');
+    const btnRes = document.getElementById('btn-font-reset');
+    const btnInc = document.getElementById('btn-font-increase');
+    const btnContRed = document.getElementById('btn-contrast-red');
+    const btnContGreen = document.getElementById('btn-contrast-green');
+    const btnContBlue = document.getElementById('btn-contrast-blue');
+
+    if (btnDec) btnDec.addEventListener('click', () => changeFontSize(-1));
+    if (btnRes) btnRes.addEventListener('click', () => changeFontSize(0));
+    if (btnInc) btnInc.addEventListener('click', () => changeFontSize(1));
+    if (btnContRed) btnContRed.addEventListener('click', () => changeContrast('red'));
+    if (btnContGreen) btnContGreen.addEventListener('click', () => changeContrast('green'));
+    if (btnContBlue) btnContBlue.addEventListener('click', () => changeContrast('blue'));
+
+    const btnCloseSocial = document.getElementById('btn-close-social');
+    if (btnCloseSocial) {
+        btnCloseSocial.addEventListener('click', hideSocialSidebar);
+    }
+
+    if (typeof iFrameResize === 'function') {
+        try { iFrameResize(); } catch (e) { console.error('Error resizing iframes:', e); }
+    }
+});

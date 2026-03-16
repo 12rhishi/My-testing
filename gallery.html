@@ -33,7 +33,7 @@
                 <a href="https://www.jnu.ac.in/emergency"
                     class="hover:text-white hover:underline transition duration-200">Emergency Services</a>
                 <span class="text-gray-600">|</span>
-                <a href="https://www.jnu.ac.in/sites/default/files/Holidays2025.pdf"
+                <a href="https://www.jnu.ac.in/sites/default/files/Holidays2026.pdf"
                     class="hover:text-white hover:underline transition duration-200">List of Holidays</a>
             </div>
 
@@ -64,24 +64,24 @@
                 <div class="flex items-center space-x-1">
                     <button
                         class="text-gray-300 hover:text-white text-xs font-bold px-1 py-0.5 rounded-sm hover:bg-gray-700 transition duration-200"
-                        onclick="changeFontSize(-1)">A-</button>
+                        id="btn-font-decrease">A-</button>
                     <button
                         class="text-gray-300 hover:text-white text-sm font-bold px-1 py-0.5 rounded-sm hover:bg-gray-700 transition duration-200"
-                        onclick="changeFontSize(0)">A</button>
+                        id="btn-font-reset">A</button>
                     <button
                         class="text-gray-300 hover:text-white text-base font-bold px-1 py-0.5 rounded-sm hover:bg-gray-700 transition duration-200"
-                        onclick="changeFontSize(1)">A+</button>
+                        id="btn-font-increase">A+</button>
                 </div>
                 <div class="flex space-x-1">
                     <button
                         class="w-4 h-4 rounded-full bg-red-500 border border-gray-600 hover:border-white transition duration-200"
-                        onclick="changeContrast('red')"></button>
+                        id="btn-contrast-red"></button>
                     <button
                         class="w-4 h-4 rounded-full bg-green-500 border border-gray-600 hover:border-white transition duration-200"
-                        onclick="changeContrast('green')"></button>
+                        id="btn-contrast-green"></button>
                     <button
                         class="w-4 h-4 rounded-full bg-blue-500 border border-gray-600 hover:border-white transition duration-200"
-                        onclick="changeContrast('blue')"></button>
+                        id="btn-contrast-blue"></button>
                 </div>
                 <span class="text-gray-600">|</span>
                 <a href="https://www.jnu.ac.in/hi"
@@ -548,7 +548,7 @@
 
     <div id="social-sidebar" class="fixed top-1/2 right-0 transform -translate-y-1/2 z-50">
         <!-- Close button for mobile -->
-        <button id="closeSocialBtn" class="social-close-btn" onclick="hideSocialSidebar()"
+        <button id="closeSocialBtn" class="social-close-btn" id="btn-close-social"
             aria-label="Close social media sidebar">
             ×
         </button>
