@@ -1,6 +1,21 @@
-﻿// JavaScript for mobile menu toggle
+// JavaScript for mobile menu toggle
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
+
+// Make the mobile menu button match the desired "two lines + Menu" style
+document.addEventListener('DOMContentLoaded', () => {
+    if (!mobileMenuButton) return;
+
+    // Avoid duplicating markup if script runs more than once
+    if (mobileMenuButton.dataset.enhanced === 'true') return;
+    mobileMenuButton.dataset.enhanced = 'true';
+
+    mobileMenuButton.setAttribute('aria-label', 'Open menu');
+    mobileMenuButton.innerHTML = `
+        <span class="menu-btn-icon" aria-hidden="true"></span>
+        <span class="menu-btn-text">Menu</span>
+    `;
+});
 
 const mobileAboutButton = document.getElementById('mobile-about-button');
 const mobileAboutMenu = document.getElementById('mobile-about-menu');
@@ -27,9 +42,11 @@ const mobileMoreButton = document.getElementById('mobile-more-button');
 const mobileMoreMenu = document.getElementById('mobile-more-menu');
 
 
-mobileMenuButton.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
-});
+if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+}
 
 // Toggle 'About ABVSME' dropdown in mobile menu
 if (mobileAboutButton) {

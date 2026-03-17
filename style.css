@@ -130,6 +130,93 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Top bar visibility cutoff (show at/above 1284px wide) */
+@media (max-width: 1283px) {
+    #top-bar {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1284px) {
+    #top-bar {
+        display: block !important;
+    }
+}
+
+/*
+  Navigation responsiveness
+  Use mobile hamburger menu for all widths <= 1536px.
+  Desktop menu should only show at widths >= 1537px.
+*/
+@media (max-width: 1536px) {
+    /* Hide desktop menu container (it uses Tailwind `hidden md:flex ...`) */
+    header nav>div.hidden.md\:flex {
+        display: none !important;
+    }
+
+    /* Show hamburger button even though Tailwind hides it at md (`md:hidden`) */
+    #mobile-menu-button {
+        display: block !important;
+    }
+
+    /*
+      Keep the mobile menu hidden by default (Tailwind `hidden`),
+      but allow it to display when JS toggles that class off.
+    */
+    #mobile-menu {
+        display: block !important;
+    }
+
+    #mobile-menu.hidden {
+        display: none !important;
+    }
+
+    /* Mobile menu button: 2-line icon + "Menu" label (bigger) */
+    #mobile-menu-button {
+        display: inline-flex !important;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.25rem 0.4rem; /* closer to previous size */
+        border-radius: 0.5rem;
+    }
+
+    #mobile-menu-button .menu-btn-text {
+        font-size: 0.95rem; /* closer to previous size */
+        font-weight: 600;
+        letter-spacing: 0.01em;
+        color: #111827;
+    }
+
+    #mobile-menu-button .menu-btn-icon {
+        position: relative;
+        width: 22px;
+        height: 14px;
+        display: inline-block;
+        flex: 0 0 auto;
+    }
+
+    #mobile-menu-button .menu-btn-icon::before,
+    #mobile-menu-button .menu-btn-icon::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 2px;
+        border-radius: 999px;
+        background: #111827;
+    }
+
+    #mobile-menu-button .menu-btn-icon::before {
+        top: 2px;
+    }
+
+    #mobile-menu-button .menu-btn-icon::after {
+        bottom: 2px;
+    }
+}
+
+/* (Removed) left sliding panel + backdrop styling */
+
 /* Prevent navigation menu items from wrapping */
 header nav>div>a,
 header nav>div>div>a {
